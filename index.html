@@ -26,25 +26,25 @@
             <a-video src="badapple.mp4" position="0 1.5 -2.00"></a-video>
         </a-scene>
         <script>
-			const canvases = [mapright, mapleft, maptop, mapbottom, mapfront, mapback];
-			for (const map of canvases) {
-				map.width = 50;
-				map.height = 50;
-				map.style.position = "absolute";
-				map.style.top = 0;
-				map.style.left = 0;
-				const ctx = map.getContext("2d");
-				ctx.fillStyle = "white";
-				ctx.fillRect(0, 0, 50, 50);
-			}
-			logo.addEventListener("model-loaded", e => {
-				const envmap = new THREE.CubeTexture(canvases);
-				e.detail.model.traverse(obj => {
-					if (!obj.material) return;
-					obj.material.envMap = envmap;
-					obj.material.needsUpdate = true;
-				});
-			});
+            const canvases = [mapright, mapleft, maptop, mapbottom, mapfront, mapback];
+            for (const map of canvases) {
+                map.width = 50;
+                map.height = 50;
+                map.style.position = "absolute";
+                map.style.top = 0;
+                map.style.left = 0;
+                const ctx = map.getContext("2d");
+                ctx.fillStyle = "white";
+                ctx.fillRect(0, 0, 50, 50);
+            }
+            logo.addEventListener("model-loaded", e => {
+                const envmap = new THREE.CubeTexture(canvases);
+                e.detail.model.traverse(obj => {
+                    if (!obj.material) return;
+                    obj.material.envMap = envmap;
+                    obj.material.needsUpdate = true;
+                });
+            });
         </script>
     </body>
 </html>
